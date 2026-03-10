@@ -148,6 +148,10 @@ const HeroSection = () => {
                     <stop offset="0%" stopColor="hsl(200, 80%, 55%)" stopOpacity="0.6" />
                     <stop offset="100%" stopColor="hsl(155, 60%, 50%)" stopOpacity="0.3" />
                   </linearGradient>
+                  <linearGradient id="lineGradHighlight" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="hsl(200, 80%, 55%)" stopOpacity="0.9" />
+                    <stop offset="100%" stopColor="hsl(155, 60%, 50%)" stopOpacity="0.7" />
+                  </linearGradient>
                 </defs>
               </svg>
 

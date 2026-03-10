@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Terminal, Database, Cloud, Globe, Cpu, Shield, BarChart3 } from "lucide-react";
+import { ArrowRight, Terminal, Database, Cloud, Globe, Cpu, FileSpreadsheet, BarChart3 } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const orbitNodes = [

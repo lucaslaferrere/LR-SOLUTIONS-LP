@@ -62,7 +62,7 @@ const AboutSection = () => {
             className="grid gap-3"
           >
             {[
-              { icon: GraduationCap, title: "Formación universitaria", desc: "Aplicamos metodologías y conocimientos de ingeniería de software de la UTN." },
+              { icon: GraduationCap, title: "Formación universitaria", desc: "Aplicamos metodologías y conocimientos de ingeniería en sistemas de la UTN." },
               { icon: Heart, title: "Pasión genuina", desc: "No hacemos esto por obligación. Lo hacemos porque nos encanta crear soluciones." },
               { icon: Lightbulb, title: "Mentalidad emprendedora", desc: "Entendemos tu negocio porque también somos emprendedores construyendo el nuestro." },
             ].map((item, i) => (

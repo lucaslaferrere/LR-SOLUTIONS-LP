@@ -1,15 +1,32 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Send, Mail } from "lucide-react";
+import { Send, Mail, Loader2, CheckCircle, AlertCircle } from "lucide-react";
+import emailjs from "@emailjs/browser";
 
 const ContactSection = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`Consulta de ${form.name}`);
-    const body = encodeURIComponent(`Nombre: ${form.name}\nEmail: ${form.email}\n\n${form.message}`);
-    window.open(`mailto:lrsolutionspartners@gmail.com?subject=${subject}&body=${body}`);
+    setStatus("loading");
+
+    try {
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          from_name: form.name,
+          from_email: form.email,
+          message: form.message,
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      );
+      setStatus("success");
+      setForm({ name: "", email: "", message: "" });
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -83,12 +100,23 @@ const ContactSection = () => {
           </div>
           <motion.button
             type="submit"
-            className="w-full gradient-bg text-primary-foreground py-2.5 rounded-lg font-medium shadow-btn hover:shadow-glow transition-all flex items-center justify-center gap-2 text-sm"
-            whileHover={{ scale: 1.01, y: -1 }}
-            whileTap={{ scale: 0.99 }}
+            disabled={status === "loading" || status === "success"}
+            className="w-full gradient-bg text-primary-foreground py-2.5 rounded-lg font-medium shadow-btn hover:shadow-glow transition-all flex items-center justify-center gap-2 text-sm disabled:opacity-70 disabled:cursor-not-allowed"
+            whileHover={status === "idle" || status === "error" ? { scale: 1.01, y: -1 } : {}}
+            whileTap={status === "idle" || status === "error" ? { scale: 0.99 } : {}}
           >
-            <Send size={16} /> Enviar mensaje
+            {status === "loading" && <><Loader2 size={16} className="animate-spin" /> Enviando...</>}
+            {status === "success" && <><CheckCircle size={16} /> ¡Mensaje enviado!</>}
+            {status === "error" && <><Send size={16} /> Reintentar</>}
+            {status === "idle" && <><Send size={16} /> Enviar mensaje</>}
           </motion.button>
+
+          {status === "error" && (
+            <p className="text-center text-xs text-destructive flex items-center justify-center gap-1">
+              <AlertCircle size={12} /> Hubo un error al enviar. Intentá de nuevo.
+            </p>
+          )}
+
           <p className="text-center text-xs text-muted-foreground flex items-center justify-center gap-1">
             <Mail size={12} /> O escribinos directamente a lrsolutionspartners@gmail.com
           </p>

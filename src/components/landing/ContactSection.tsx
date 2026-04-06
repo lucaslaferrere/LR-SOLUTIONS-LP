@@ -24,6 +24,8 @@ const ContactSection = () => {
       );
       setStatus("success");
       setForm({ name: "", email: "", message: "" });
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: "contact_form_submit" });
     } catch {
       setStatus("error");
     }

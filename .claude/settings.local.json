@@ -4,7 +4,13 @@
       "Bash(npm install:*)",
       "Bash(pip install:*)",
       "Bash(magick --version)",
-      "Bash(convert --version)"
+      "Bash(convert --version)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\lafer\\LR-SOLUTIONS-LP\\public"
     ]
   }
 }

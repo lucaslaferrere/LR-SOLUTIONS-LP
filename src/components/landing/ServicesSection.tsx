@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Monitor, Globe, Wrench, LayoutDashboard, ArrowUpRight, Bot } from "lucide-react";
+import { Monitor, Globe, Wrench, LayoutDashboard, ArrowUpRight, Bot, Users } from "lucide-react";
 import TiltCard from "./TiltCard";
 
 const services = [
@@ -8,6 +8,7 @@ const services = [
   { icon: Globe, title: "Páginas web", desc: "Sitios atractivos, responsivos y optimizados para que tu marca tenga presencia online." },
   { icon: Wrench, title: "Mantenimiento y soporte", desc: "Te acompañamos después de la entrega con soporte continuo y mejoras." },
   { icon: Bot, title: "Agentes Virtuales con IA", desc: "Agentes conversacionales disponibles 24/7 que atienden clientes, responden consultas y automatizan procesos repetitivos, integrándose a tus sistemas existentes." },
+  { icon: Users, title: "CRM", desc: "Gestioná contactos, seguimientos y oportunidades de venta en un solo lugar. Nunca más pierdas un cliente por falta de seguimiento." },
 ];
 
 const ServicesSection = () => {
